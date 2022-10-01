@@ -11,27 +11,31 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="30sp"
-        android:text="Pay" />
+        android:text="Pay"
+        />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="30sp"
-        android:text="Reset" />
+        android:text="reset"
+        />
 
     <Button
+        android:onClick="viewCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="30sp"
-        android:text="View Cart" />
+        android:text="View Cart"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity ="center"
-        android:text="Total cart value  0.00 MWK "
+        android:text="Total value  0.00 Mwk "
         android:textSize="30sp"
         android:id="@+id/response"
         />
