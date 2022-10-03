@@ -24,18 +24,21 @@ import java.util.Set;
 
 public class ViewCart extends AppCompatActivity {
 
-    TextView p_response;
     Cart cart = MainActivity.p_cart;
     PayPalConfiguration n_config = MainActivity.p_configuration;
     int new_Code = MainActivity.p_paypalRequestCode;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_cart);
+
+        Cart cart = MainActivity.p_cart;
 
         LinearLayout cartLayout = (LinearLayout) findViewById(R.id.cart);
 
         Set<Product> products = cart.getProducts();
 
+        // iterate through the clicked items and increment the number of clicks for each item
         Iterator iterator = products.iterator();
         while(iterator.hasNext())
         {
@@ -43,40 +46,30 @@ public class ViewCart extends AppCompatActivity {
             LinearLayout linearLayout = new LinearLayout(this);
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);
             TextView name = new TextView(this);
-            TextView quantity = new TextView(this);
 
+            TextView quantity = new TextView(this);
             name.setText(product.getP_name());
             quantity.setText(Integer.toString(cart.getQuantity(product)));
-
             name.setTextSize(20);
             quantity.setTextSize(20);
 
             linearLayout.addView(name);
             linearLayout.addView(quantity);
-
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
                     , 150, Gravity.CENTER);
+
             layoutParams.setMargins(20, 30,20, 30);
             linearLayout.setLayoutParams(layoutParams);
 
             name.setLayoutParams(new TableLayout.LayoutParams(0, ActionBar.LayoutParams.WRAP_CONTENT, 1));
             quantity.setLayoutParams(new TableLayout.LayoutParams(0, ActionBar.LayoutParams.WRAP_CONTENT, 1));
-
             name.setGravity(Gravity.CENTER);
             quantity.setGravity(Gravity.CENTER);
-
             cartLayout.addView(linearLayout);
-
         }
-
     }
 
-    public void resetCard(View view)
-    {
-        p_response.setText("Total value = 0 Mwk");
-        cart.empty();
-    }
-
+    //takes the total price from the cart and tag it to paypal
     public void pay(View view)
     {
         PayPalPayment payment = new PayPalPayment(new BigDecimal(cart.getValue()), "USD", "Cart Pay",

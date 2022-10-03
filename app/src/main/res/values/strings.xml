@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">paymentApp</string>
+    <string name="select_an_item_to_cart">Select items to cart</string>
+    <string name="total_value_0_00_mwk">Total value = 0.00 Mwk</string>
+    <string name="reset">reset cart</string>
+    <string name="view_cart">View Cart</string>
 </resources>

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -10,13 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:onClick="resetCard"
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity ="center"
+            android:text="@string/select_an_item_to_cart"
             android:textSize="30sp"
-            android:text="reset"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            android:textColor="@color/white"
+            android:background="@color/purple_500"
             />
 
 
@@ -24,8 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity ="center"
-            android:text="Total value  0.00 Mwk "
-            android:textSize="30sp"
+            android:text="@string/total_value_0_00_mwk"
+            android:textSize="25sp"
             android:id="@+id/response"
             />
 
@@ -44,17 +49,30 @@
 
         </ScrollView>
 
+        <Button
+            android:onClick="resetCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:textSize="28sp"
+            android:text="@string/reset"
+            />
+
 
         <Button
             android:onClick="viewCart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="30sp"
-            android:text="View Cart"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:textSize="28sp"
+            android:text="@string/view_cart"
             />
 
-
     </LinearLayout>
+
 
 </ScrollView>
