@@ -3,25 +3,34 @@ package com.example.paymentapp;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.paypal.android.sdk.payments.PayPalConfiguration;
+import com.paypal.android.sdk.payments.PayPalPayment;
+import com.paypal.android.sdk.payments.PayPalService;
+import com.paypal.android.sdk.payments.PaymentActivity;
+
+import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.Set;
 
 public class ViewCart extends AppCompatActivity {
 
-    @Override
+    TextView p_response;
+    Cart cart = MainActivity.p_cart;
+    PayPalConfiguration n_config = MainActivity.p_configuration;
+    int new_Code = MainActivity.p_paypalRequestCode;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_cart);
-
-        Cart cart = MainActivity.p_cart;
 
         LinearLayout cartLayout = (LinearLayout) findViewById(R.id.cart);
 
@@ -60,5 +69,22 @@ public class ViewCart extends AppCompatActivity {
 
         }
 
+    }
+
+    public void resetCard(View view)
+    {
+        p_response.setText("Total value = 0 Mwk");
+        cart.empty();
+    }
+
+    public void pay(View view)
+    {
+        PayPalPayment payment = new PayPalPayment(new BigDecimal(cart.getValue()), "USD", "Cart Pay",
+                PayPalPayment.PAYMENT_INTENT_SALE);
+
+        Intent intent = new Intent(this, PaymentActivity.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, n_config);
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
+        startActivityForResult(intent, new_Code);
     }
 }

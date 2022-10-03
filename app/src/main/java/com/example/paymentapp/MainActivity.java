@@ -1,37 +1,35 @@
-package com.example.paymentapp;
+ package com.example.paymentapp;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
+ import android.app.Activity;
+ import android.content.Intent;
+ import android.media.audiofx.DynamicsProcessing;
+ import android.os.Bundle;
+ import android.view.Gravity;
+ import android.view.View;
+ import android.view.ViewGroup;
+ import android.widget.Button;
+ import android.widget.LinearLayout;
+ import android.widget.TextView;
 
-import android.app.Activity;
-import android.content.Intent;
-import java.math.BigDecimal;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+ import androidx.appcompat.app.AppCompatActivity;
 
-import com.paypal.android.sdk.payments.PayPalConfiguration;
-import com.paypal.android.sdk.payments.PayPalPayment;
-import com.paypal.android.sdk.payments.PayPalService;
-import com.paypal.android.sdk.payments.PaymentActivity;
-import com.paypal.android.sdk.payments.PaymentConfirmation;
+ import com.paypal.android.sdk.payments.PayPalConfiguration;
+ import com.paypal.android.sdk.payments.PayPalPayment;
+ import com.paypal.android.sdk.payments.PayPalService;
+ import com.paypal.android.sdk.payments.PaymentActivity;
+ import com.paypal.android.sdk.payments.PaymentConfirmation;
 
-import static com.paypal.android.sdk.payments.PayPalConfiguration.ENVIRONMENT_SANDBOX;
+ import java.math.BigDecimal;
 
 public class MainActivity extends AppCompatActivity
 {
     TextView p_response;
     static Cart p_cart;
 
-    PayPalConfiguration p_configuration;
-    String p_paypalClientId = "AWQXPmu-G34y5gxyflWA9AwBWaEjq5M_NM-d4mh0KC6zvwUFCqQvhmJ6jAww8WxpxC0XsPZ6xNz4WzP_";
+    static PayPalConfiguration p_configuration;
+    String p_paypalClientId ="AWQXPmu-G34y5gxyflWA9AwBWaEjq5M_NM-d4mh0KC6zvwUFCqQvhmJ6jAww8WxpxC0XsPZ6xNz4WzP_";
     Intent P_service;
-    int p_paypalRequestCode = 999;
+    static int p_paypalRequestCode = 333;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -58,8 +56,7 @@ public class MainActivity extends AppCompatActivity
                         new Product("Tomato", 20.99),
                         new Product("Chinangwa", 23.99),
                         new Product("Mbatata", 40.99),
-                        new Product("Nthochi", 50.99),
-                        new Product("Mawungu", 15.99),
+
 
                 };
 
@@ -92,17 +89,16 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void pay(View view)
+    /*public void pay(View view)
     {
-        PayPalPayment payment = new PayPalPayment(new BigDecimal(p_cart.getValue() ),"USD", "Cart",
+        PayPalPayment payment = new PayPalPayment(new BigDecimal(p_cart.getValue()), "USD", "Cart Pay",
                 PayPalPayment.PAYMENT_INTENT_SALE);
+
         Intent intent = new Intent(this, PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, p_configuration);
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
-        //noinspection deprecation
         startActivityForResult(intent, p_paypalRequestCode);
-
-    }
+    }*/
 
     public void viewCart(View view)
     {

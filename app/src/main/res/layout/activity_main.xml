@@ -1,58 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:text="Pay"
-        />
+        android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:text="reset"
-        />
-
-    <Button
-        android:onClick="viewCart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:text="View Cart"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity ="center"
-        android:text="Total value  0.00 Mwk "
-        android:textSize="30sp"
-        android:id="@+id/response"
-        />
+        <Button
+            android:onClick="resetCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:text="reset"
+            />
 
 
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity ="center"
+            android:text="Total value  0.00 Mwk "
+            android:textSize="30sp"
+            android:id="@+id/response"
+            />
 
-       <LinearLayout
-           android:id="@+id/list"
-           android:orientation="vertical"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
 
-       </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-   </ScrollView>
+            <LinearLayout
+                android:id="@+id/list"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-</LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+
+        <Button
+            android:onClick="viewCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:text="View Cart"
+            />
+
+
+    </LinearLayout>
+
+</ScrollView>
